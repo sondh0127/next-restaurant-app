@@ -8,10 +8,12 @@
 		"type-check": "tsc"
 	},
 	"dependencies": {
+		"framer-motion": "^4.0.0",
 		"next": "latest",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
-		"twind": "^0.16.3"
+		"twind": "^0.16.3",
+		"use-in-view": "^1.0.15"
 	},
 	"devDependencies": {
 		"@twind/next": "^1.0.6",
