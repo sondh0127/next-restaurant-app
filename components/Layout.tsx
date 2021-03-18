@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import NextLink from 'next/link'
+import NextHead from "next/head";
 
 type Props = {
   children?: ReactNode
@@ -9,32 +9,32 @@ type Props = {
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
   <div>
-    <Head>
-      <title>{title}</title>
+    <NextHead>
+    <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
+    </NextHead>
+    {/* <header>
       <nav>
-        <Link href="/">
+        <NextLink href="/">
           <a>Home</a>
-        </Link>{' '}
+        </NextLink>{' '}
         |{' '}
-        <Link href="/about">
+        <NextLink href="/about">
           <a>About</a>
-        </Link>{' '}
+        </NextLink>{' '}
         |{' '}
-        <Link href="/users">
+        <NextLink href="/users">
           <a>Users List</a>
-        </Link>{' '}
+        </NextLink>{' '}
         | <a href="/api/users">Users API</a>
       </nav>
-    </header>
+    </header> */}
     {children}
-    <footer>
+    {/* <footer>
       <hr />
       <span>I'm here to stay (Footer)</span>
-    </footer>
+    </footer> */}
   </div>
 )
 
