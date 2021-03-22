@@ -1,10 +1,5 @@
 {
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@twind/typescript-plugin"
-      }
-    ],
     "allowJs": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
@@ -32,6 +27,6 @@
       "@types/node",
     ]
   },
-  "exclude": ["node_modules"],
+  // "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
 }

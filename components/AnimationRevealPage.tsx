@@ -3,7 +3,7 @@ import { tw } from 'twind'
 /* framer-motion and useInView here are used to animate the sections in when we reach them in the viewport
  */
 import { motion } from 'framer-motion'
-import useInView from 'use-in-view'
+// import useInView from 'use-in-view'
 import React from 'react'
 
 
@@ -37,7 +37,7 @@ function AnimatedSlideInComponent({
 	offset?: number,
 	children: React.ReactNode,
 }) {
-	const [ref, inView] = useInView(30)
+	// const [ref, inView] = useInView(30)
 
 	const x: {initial: string, target: string} = { initial: '', target: '0%' }
 
@@ -48,13 +48,17 @@ function AnimatedSlideInComponent({
 		<motion.section
 			initial={{ x: x.initial }}
 			animate={{
-				x: inView && x.target,
+				// x: inView && x.target,
+				// transitionEnd: {
+				// 	x: inView && 0,
+				// },
+				x: true && x.target,
 				transitionEnd: {
-					x: inView && 0,
+					x: true && 0,
 				},
 			}}
 			transition={{ type: 'spring', damping: 100 }}
-			ref={ref}
+			// ref={ref}
 		>
 			{children}
 		</motion.section>

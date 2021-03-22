@@ -34,6 +34,7 @@ const IndexPageOld = () => {
 const IndexPage = () => {
 	return (
 		<AnimationRevealPage>
+			<IndexPageOld />
 			<Hero
 				heading={
 					<>
@@ -53,3 +54,4 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+// export default IndexPageOld

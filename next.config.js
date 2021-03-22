@@ -1,6 +1,7 @@
+const withPlugins = require('next-compose-plugins')
 const withTM = require('next-transpile-modules')(['@twind/next'])
-
-module.exports = withTM({
+const withImages = require('next-images')
+const nextConfig = {
 	webpack: (config) => {
 		// Fixes npm packages that depend on `fs` module
 		config.node = {
@@ -9,4 +10,6 @@ module.exports = withTM({
 
 		return config
 	},
-})
+}
+
+module.exports = withPlugins([[withTM], [withImages]], nextConfig)

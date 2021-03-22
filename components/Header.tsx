@@ -1,14 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import tw from "twin.macro";
-import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
+import { tw } from 'twind'
+import useAnimatedNavToggler from "../hooks/useAnimatedNavToggler";
 
-import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
-
-import logo from "../../images/logo.svg";
-import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
-import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+import logo from "../assets/images/logo.svg";
+import {Menu as MenuIcon, X as CloseIcon} from 'react-feather'
 
 const Header = tw.header`
   flex justify-between items-center
@@ -97,7 +93,8 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
   links = links || defaultLinks;
 
   return (
-    <Header className={className || "header-light"}={collapseBreakpointCss.desktopNavLinks}>
+    <header className={tw`flex justify-between items-center max-w-screen-xl mx-auto ${className || "header-light"}`}>
+      <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
       </DesktopNavLinks>
@@ -111,7 +108,7 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}
         </NavToggle>
       </MobileNavLinksContainer>
-    </Header>
+    </header>
   );
 };
 
