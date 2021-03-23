@@ -4,6 +4,7 @@ import { tw, styled } from '@twind/react'
 import AnimationRevealPage from '@/components/AnimationRevealPage'
 import Hero from '@/components/Hero'
 import MainFeature from '@/components/MainFeature'
+import TabCardGrid from '@/components/TabCardGrid'
 
 const Subheading = styled("span", { base: `tracking-wider text-sm font-medium` });
 const HighlightedText = styled("span", { base: `bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block` });
@@ -76,6 +77,13 @@ const IndexPage = () => {
 				imageClass={imageClass}
 				imageDecoratorBlob={true}
 				imageDecoratorBlobClass={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
+			/>
+			<TabCardGrid
+				heading={
+					<>
+						Checkout our <HighlightedText>menu.</HighlightedText>
+					</>
+				}
 			/>
 		</AnimationRevealPage>
 	)
