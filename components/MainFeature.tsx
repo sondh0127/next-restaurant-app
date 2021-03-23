@@ -9,6 +9,7 @@ const Container = styled("div", { base: `relative` });
 const TwoColumn = styled("div", { base: `flex flex-col md:flex-row justify-between max-w-screen-xl mx-auto py-20 md:py-24 items-center` });
 const Column = styled("div", { base: `w-full max-w-md mx-auto md:max-w-none md:mx-0` });
 const ImageColumn = styled(Column, { base: `md:w-6/12 flex-shrink-0 relative` });
+
 const TextColumn = styled(Column, {
   base: `md:w-6/12 mt-16 md:mt-0`,
   variants: {
@@ -16,10 +17,10 @@ const TextColumn = styled(Column, {
       left: `md:mr-12 lg:mr-16 md:order-first`,
       right: `md:ml-12 lg:ml-16 md:order-last`,
     },
-  },
-  defaults: {
-    textPosition: "left",
   }
+  // defaults: {
+  //   textPosition: "left",
+  // }
 });
 
 
