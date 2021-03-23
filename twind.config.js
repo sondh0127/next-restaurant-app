@@ -66,4 +66,7 @@ export default {
 			},
 		},
 	},
+	variants: {
+		hocus: '&:hover &:focus',
+	},
 }
