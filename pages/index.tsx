@@ -5,13 +5,23 @@ import AnimationRevealPage from '@/components/AnimationRevealPage'
 import Hero from '@/components/Hero'
 import MainFeature from '@/components/MainFeature'
 import TabCardGrid from '@/components/TabCardGrid'
+import Features from '@/components/Features'
 
-const Subheading = styled("span", { base: `tracking-wider text-sm font-medium` });
-const HighlightedText = styled("span", { base: `bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block` });
-const HighlightedTextInverse = styled("span", { base: `bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block` });
-const Description = styled("span", { base: `inline-block mt-8` });
-const imageClass = tw`rounded-4xl`;
+import chefIconImageSrc from '@/assets/images/chef-icon.svg'
+import celebrationIconImageSrc from '@/assets/images/celebration-icon.svg'
+import shopIconImageSrc from '@/assets/images/shop-icon.svg'
 
+const Subheading = styled('span', {
+	base: `tracking-wider text-sm font-medium`,
+})
+const HighlightedText = styled('span', {
+	base: `bg-primary-500 text-gray-100 px-4 transform -skew-x-12 inline-block`,
+})
+const HighlightedTextInverse = styled('span', {
+	base: `bg-gray-100 text-primary-500 px-4 transform -skew-x-12 inline-block`,
+})
+const Description = styled('span', { base: `inline-block mt-8` })
+const imageClass = tw`rounded-4xl`
 
 const IndexPageOld = () => {
 	return (
@@ -61,18 +71,19 @@ const IndexPage = () => {
 				}
 				description={
 					<Description>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-						dolore magna aliqua.
-            <br />
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						<br />
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </Description>
+						<br />
+						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+						nisi ut aliquip ex ea commodo consequat.
+					</Description>
 				}
 				buttonRounded={false}
 				textOnLeft={false}
 				primaryButtonText="Latest Offers"
 				imageSrc={
-					"https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
+					'https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80'
 				}
 				imageClass={imageClass}
 				imageDecoratorBlob={true}
@@ -84,6 +95,35 @@ const IndexPage = () => {
 						Checkout our <HighlightedText>menu.</HighlightedText>
 					</>
 				}
+			/>
+			<Features
+				heading={
+					<>
+						Amazing <HighlightedText>Services.</HighlightedText>
+					</>
+				}
+				cards={[
+					{
+						imageSrc: shopIconImageSrc,
+						title: '230+ Locations',
+						description: 'Lorem ipsum donor amet siti ceali placeholder text',
+						url: 'https://google.com',
+					},
+					{
+						imageSrc: chefIconImageSrc,
+						title: 'Professional Chefs',
+						description: 'Lorem ipsum donor amet siti ceali placeholder text',
+						url: 'https://timerse.com',
+					},
+					{
+						imageSrc: celebrationIconImageSrc,
+						title: 'Birthday Catering',
+						description: 'Lorem ipsum donor amet siti ceali placeholder text',
+						url: 'https://reddit.com',
+					},
+				]}
+				imageContainerCss={tw`p-2!`}
+				imageCss={tw`w-20! h-20!`}
 			/>
 		</AnimationRevealPage>
 	)
