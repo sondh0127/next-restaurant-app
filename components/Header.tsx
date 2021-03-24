@@ -1,5 +1,4 @@
 import React from 'react'
-import { motion } from 'framer-motion'
 import { tw } from 'twind'
 import { styled } from '@twind/react'
 import useAnimatedNavToggler from '../hooks/useAnimatedNavToggler'
@@ -8,7 +7,7 @@ import logo from '../assets/images/logo.svg'
 import { Menu as MenuIcon, X as CloseIcon } from 'react-feather'
 
 const HeaderContainer = styled('header', {
-  base: `flex justify-between items-center max-w-screen-xl mx-auto`,
+	base: `flex justify-between items-center max-w-screen-xl mx-auto`,
 })
 
 export const NavLinks = styled('div', { base: `inline-block` })
@@ -17,14 +16,14 @@ export const NavLinks = styled('div', { base: `inline-block` })
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
 export const NavLink = styled('a', {
-  base: `text-lg my-2 lg:text-sm text-2xl! lg:mx-6 lg:my-0
+	base: `text-lg my-2 lg:text-sm text-2xl! lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
 `,
 })
 
 export const PrimaryLink = styled(NavLink, {
-  base: `lg:mx-0
+	base: `lg:mx-0
   px-8 py-3 rounded bg-primary-500 text-gray-100
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
   border-b-0
@@ -32,14 +31,14 @@ export const PrimaryLink = styled(NavLink, {
 })
 
 export const LogoLink = styled(NavLink, {
-  base: `flex items-center font-black border-b-0 text-2xl! ml-0!`,
+	base: `flex items-center font-black border-b-0 text-2xl! ml-0!`,
 })
 
 export const MobileNavLinksContainer = styled('nav', {
-  base: `flex flex-1 items-center justify-between`,
+	base: `flex flex-1 items-center justify-between`,
 })
 export const NavToggle = styled('button', {
-  base: `lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
+	base: `lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
 `,
 })
 // TODO:
@@ -51,7 +50,7 @@ export const NavToggle = styled('button', {
 // `}))
 
 export const DesktopNavLinks = styled('nav', {
-  base: `hidden lg:flex flex-1 justify-between items-center`,
+	base: `hidden lg:flex flex-1 justify-between items-center`,
 })
 
 /* The below code is for generating dynamic break points for navbar.
@@ -61,117 +60,120 @@ export const DesktopNavLinks = styled('nav', {
  */
 
 const collapseBreakPointCssMap = {
-  sm: {
-    mobileNavLinks: tw`sm:hidden`,
-    desktopNavLinks: tw`sm:flex`,
-    mobileNavLinksContainer: tw`sm:hidden`,
-  },
-  md: {
-    mobileNavLinks: tw`md:hidden`,
-    desktopNavLinks: tw`md:flex`,
-    mobileNavLinksContainer: tw`md:hidden`,
-  },
-  lg: {
-    mobileNavLinks: tw`lg:hidden`,
-    desktopNavLinks: tw`lg:flex`,
-    mobileNavLinksContainer: tw`lg:hidden`,
-  },
-  xl: {
-    mobileNavLinks: tw`lg:hidden`,
-    desktopNavLinks: tw`lg:flex`,
-    mobileNavLinksContainer: tw`lg:hidden`,
-  },
+	sm: {
+		mobileNavLinks: tw`sm:hidden`,
+		desktopNavLinks: tw`sm:flex`,
+		mobileNavLinksContainer: tw`sm:hidden`,
+	},
+	md: {
+		mobileNavLinks: tw`md:hidden`,
+		desktopNavLinks: tw`md:flex`,
+		mobileNavLinksContainer: tw`md:hidden`,
+	},
+	lg: {
+		mobileNavLinks: tw`lg:hidden`,
+		desktopNavLinks: tw`lg:flex`,
+		mobileNavLinksContainer: tw`lg:hidden`,
+	},
+	xl: {
+		mobileNavLinks: tw`lg:hidden`,
+		desktopNavLinks: tw`lg:flex`,
+		mobileNavLinksContainer: tw`lg:hidden`,
+	},
 }
 
 type CollapseBreakpointClass = keyof typeof collapseBreakPointCssMap
 
 const Header: React.FC<{
-  roundedHeaderButton?: boolean
-  logoLink?: any
-  links?: any[]
-  className?: string
-  collapseBreakpointClass?: CollapseBreakpointClass
+	roundedHeaderButton?: boolean
+	logoLink?: any
+	links?: any[]
+	className?: string
+	collapseBreakpointClass?: CollapseBreakpointClass
 }> = ({
-  roundedHeaderButton = false,
-  logoLink,
-  links,
-  className,
-  collapseBreakpointClass = 'lg',
+	roundedHeaderButton = false,
+	logoLink,
+	links,
+	className,
+	collapseBreakpointClass = 'lg',
 }) => {
-    /*
-     * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
-     * This links props should be an array of "NavLinks" components which is exported from this file.
-     * Each "NavLinks" component can contain any amount of "NavLink" component, also exported from this file.
-     * This allows this Header to be multi column.
-     * So If you pass only a single item in the array with only one NavLinks component as root, you will get 2 column header.
-     * Left part will be LogoLink, and the right part will be the the NavLinks component you
-     * supplied.
-     * Similarly if you pass 2 items in the links array, then you will get 3 columns, the left will be "LogoLink", the center will be the first "NavLinks" component in the array and the right will be the second "NavLinks" component in the links array.
-     * You can also choose to directly modify the links here by not passing any links from the parent component and
-     * changing the defaultLinks variable below below.
-     * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
-     */
-    const defaultLinks = [
-      <NavLinks key={1}>
-        <NavLink href="/#">About</NavLink>
-        <NavLink href="/#">Blog</NavLink>
-        <NavLink href="/#">Pricing</NavLink>
-        <NavLink href="/#">Contact Us</NavLink>
-        <NavLink href="/#" tw="lg:ml-12!">
-          Login
+	/*
+	 * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
+	 * This links props should be an array of "NavLinks" components which is exported from this file.
+	 * Each "NavLinks" component can contain any amount of "NavLink" component, also exported from this file.
+	 * This allows this Header to be multi column.
+	 * So If you pass only a single item in the array with only one NavLinks component as root, you will get 2 column header.
+	 * Left part will be LogoLink, and the right part will be the the NavLinks component you
+	 * supplied.
+	 * Similarly if you pass 2 items in the links array, then you will get 3 columns, the left will be "LogoLink", the center will be the first "NavLinks" component in the array and the right will be the second "NavLinks" component in the links array.
+	 * You can also choose to directly modify the links here by not passing any links from the parent component and
+	 * changing the defaultLinks variable below below.
+	 * If you manipulate links here, all the styling on the links is already done for you. If you pass links yourself though, you are responsible for styling the links or use the helper styled components that are defined here (NavLink)
+	 */
+	const defaultLinks = [
+		<NavLinks key={1}>
+			<NavLink href="/#">About</NavLink>
+			<NavLink href="/#">Blog</NavLink>
+			<NavLink href="/#">Pricing</NavLink>
+			<NavLink href="/#">Contact Us</NavLink>
+			<NavLink href="/#" tw="lg:ml-12!">
+				Login
 			</NavLink>
-        <PrimaryLink className={tw` ${roundedHeaderButton && 'rounded-full'}`} href="/#">
-          Sign Up
+			<PrimaryLink
+				className={tw` ${roundedHeaderButton && 'rounded-full'}`}
+				href="/#"
+			>
+				Sign Up
 			</PrimaryLink>
-      </NavLinks>,
-    ]
+		</NavLinks>,
+	]
 
-    const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler()
-    const collapseBreakpointCss =
-      collapseBreakPointCssMap[collapseBreakpointClass]
+	const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler()
+	const collapseBreakpointCss =
+		collapseBreakPointCssMap[collapseBreakpointClass]
 
-    const defaultLogoLink = (
-      <LogoLink href="/">
-        <img className={tw`w-10 mr-3`} src={logo} alt="logo" />
-			  Treact
-      </LogoLink>
-    )
+	const defaultLogoLink = (
+		<LogoLink href="/">
+			<img className={tw`w-10 mr-3`} src={logo} alt="logo" />
+			Treact
+		</LogoLink>
+	)
 
-    logoLink = logoLink || defaultLogoLink
-    links = links || defaultLinks
+	logoLink = logoLink || defaultLogoLink
+	links = links || defaultLinks
 
-    return (
-      <HeaderContainer className={className || 'header-light'}>
-        <DesktopNavLinks className={collapseBreakpointCss.desktopNavLinks}>
-          {logoLink}
-          {links}
-        </DesktopNavLinks>
+	return (
+		<HeaderContainer className={className || 'header-light'}>
+			<DesktopNavLinks className={collapseBreakpointCss.desktopNavLinks}>
+				{logoLink}
+				{links}
+			</DesktopNavLinks>
 
-        <MobileNavLinksContainer
-          className={collapseBreakpointCss.mobileNavLinksContainer}
-        >
-          {logoLink}
-          {/* TODO */}
-          {/* <MobileNavLinks
+			<MobileNavLinksContainer
+				className={collapseBreakpointCss.mobileNavLinksContainer}
+			>
+				{logoLink}
+				{/* TODO */}
+				{/* <MobileNavLinks
             initial={{ x: '150%', display: 'none' }}
             animate={animation}
             css={collapseBreakpointCss.mobileNavLinks}
           >
             {links}
           </MobileNavLinks> */}
-          <NavToggle
-            onClick={toggleNavbar}
-          // className={showNavLinks ? 'open' : 'closed'}
-          >
-            {showNavLinks ? (
-              <CloseIcon className={tw`w-6 h-6`} />
-            ) : (
-              <MenuIcon className={tw`w-6 h-6`} />
-            )}
-          </NavToggle>
-        </MobileNavLinksContainer>
-      </HeaderContainer>
-    )
-  }
+				<NavToggle
+					onClick={toggleNavbar}
+					// className={showNavLinks ? 'open' : 'closed'}
+				>
+					{showNavLinks ? (
+						<CloseIcon className={tw`w-6 h-6`} />
+					) : (
+						<MenuIcon className={tw`w-6 h-6`} />
+					)}
+				</NavToggle>
+			</MobileNavLinksContainer>
+		</HeaderContainer>
+	)
+}
 
 export default Header

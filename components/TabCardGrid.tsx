@@ -107,14 +107,14 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2, {
 interface TabCardGridProps {
 	heading?: React.ReactNode
 	tabs?: {
-		Starters: any[]
-		Main: any[]
-		Soup: any[]
-		Desserts: any[]
+		Starters: Record<string, string>[]
+		Main: Record<string, string>[]
+		Soup: Record<string, string>[]
+		Desserts: Record<string, string>[]
 	}
 }
 
-type TabsKeys = keyof TabCardGridProps['tabs']
+type TabsKeys = 'Starters' | 'Main' | 'Soup' | 'Desserts'
 
 const TabCardGrid: React.FC<TabCardGridProps> = ({
 	heading = 'Checkout the Menu',
@@ -211,7 +211,7 @@ const TabCardGrid: React.FC<TabCardGridProps> = ({
 	 * as the key and value of the key will be its content (as an array of objects).
 	 * To see what attributes are configurable of each object inside this array see the example above for "Starters".
 	 */
-	const tabsKeys = Object.keys(tabs) as TabsKeys[]
+	const tabsKeys: TabsKeys[] = Object.keys(tabs) as TabsKeys[]
 	const [activeTab, setActiveTab] = useState<TabsKeys>(tabsKeys[0])
 
 	return (

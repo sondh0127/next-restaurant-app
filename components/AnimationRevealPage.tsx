@@ -6,8 +6,13 @@ import { motion } from 'framer-motion'
 // import useInView from 'use-in-view'
 import React from 'react'
 
-
-function AnimationReveal({ disabled, children } : {disabled: boolean, children: React.ReactNode[]}) {
+function AnimationReveal({
+	disabled,
+	children,
+}: {
+	disabled: boolean
+	children: React.ReactNode[]
+}) {
 	if (disabled) {
 		return <>{children}</>
 	}
@@ -29,17 +34,17 @@ function AnimationReveal({ disabled, children } : {disabled: boolean, children: 
 }
 
 function AnimatedSlideInComponent({
-	direction = 'left' ,
-	offset = 30,
+	direction = 'left',
+	// offset = 30,
 	children,
 }: {
-	direction: 'left' | 'right',
-	offset?: number,
-	children: React.ReactNode,
+	direction: 'left' | 'right'
+	offset?: number
+	children: React.ReactNode
 }) {
 	// const [ref, inView] = useInView(30)
 
-	const x: {initial: string, target: string} = { initial: '', target: '0%' }
+	const x: { initial: string; target: string } = { initial: '', target: '0%' }
 
 	if (direction === 'left') x.initial = '-150%'
 	else x.initial = '150%'
@@ -66,7 +71,9 @@ function AnimatedSlideInComponent({
 }
 
 const AnimationRevealPage: React.FC<any> = (props) => (
-	<div className={`App ${tw`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`}`}>
+	<div
+		className={`App ${tw`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`}`}
+	>
 		<AnimationReveal {...props} />
 	</div>
 )
