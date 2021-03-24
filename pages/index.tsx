@@ -6,6 +6,10 @@ import Hero from '@/components/Hero'
 import MainFeature from '@/components/MainFeature'
 import TabCardGrid from '@/components/TabCardGrid'
 import Features from '@/components/Features'
+import MainFeature2 from '@/components/MainFeature2'
+import Testimonial from '@/components/Testimonial'
+import DownloadApp from '@/components/DownloadApp'
+import Footer from '@/components/Footer'
 
 import chefIconImageSrc from '@/assets/images/chef-icon.svg'
 import celebrationIconImageSrc from '@/assets/images/celebration-icon.svg'
@@ -125,6 +129,54 @@ const IndexPage = () => {
 				imageContainerCss={tw`p-2!`}
 				imageCss={tw`w-20! h-20!`}
 			/>
+			<MainFeature2
+				subheading={<Subheading>A Reputed Brand</Subheading>}
+				heading={
+					<>
+						Why <HighlightedText>Choose Us ?</HighlightedText>
+					</>
+				}
+				statistics={[
+					{
+						key: 'Orders',
+						value: '94000+',
+					},
+					{
+						key: 'Customers',
+						value: '11000+',
+					},
+					{
+						key: 'Chefs',
+						value: '1500+',
+					},
+				]}
+				primaryButtonText="Order Now"
+				primaryButtonUrl="https://order.now.com"
+				imageInsideDiv={false}
+				imageSrc="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEzNzI2fQ&auto=format&fit=crop&w=768&q=80"
+				imageCss={tw`bg-cover ${imageClass}`}
+				imageContainerCss={tw`md:w-1/2 h-auto`}
+				imageDecoratorBlob={true}
+				imageDecoratorBlobCss={tw`left-1/2 md:w-32 md:h-32 -translate-x-1/2 opacity-25`}
+				textOnLeft={true}
+			/>
+			<Testimonial
+				subheading=""
+				heading={
+					<>
+						Customers <HighlightedText>Love Us.</HighlightedText>
+					</>
+				}
+			/>
+			<DownloadApp
+				text={
+					<>
+						People around you are ordering delicious meals using the{' '}
+						<HighlightedTextInverse>Treact App.</HighlightedTextInverse>
+					</>
+				}
+			/>
+			<Footer />
 		</AnimationRevealPage>
 	)
 }

@@ -64,7 +64,7 @@ const DecoratorBlob = styled(SvgDecoratorBlob3, {
 interface FeaturesProps {
 	cards?: any[]
 	linkText?: string
-	heading?: string
+	heading?: React.ReactNode
 	subheading?: string
 	description?: string
 	imageContainerCss?: string
