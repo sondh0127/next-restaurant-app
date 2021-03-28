@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useQuery } from 'react-query'
 
-type Category = 'salate' & string & {}
-type Option = string
-type Picture = string
+export type Category = 'salate' & string & {}
+export type Option = string
+export type Picture = string
 
-interface Dish {
+export interface Dish {
 	_id: string
 	name: string
 	categories: Category[]
@@ -17,7 +17,7 @@ interface Dish {
 	updated_at: string
 }
 
-const DOMAIN = 'https://vg-reor.herokuapp.com'
+export const DOMAIN = 'https://vg-reor.herokuapp.com'
 
 const fetchDishes = async (limit = 10) => {
 	const { data } = await axios.get<{ dishes: Dish[] }>(
