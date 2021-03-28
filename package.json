@@ -8,6 +8,7 @@
 		"type-check": "tsc"
 	},
 	"dependencies": {
+		"@twind/forms": "^0.1.4",
 		"@twind/react": "^0.0.4",
 		"axios": "^0.21.1",
 		"framer-motion": "^4.0.3",
@@ -17,6 +18,7 @@
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-feather": "^2.0.9",
+		"react-hook-form": "^6.15.5",
 		"react-intersection-observer": "^8.31.0",
 		"react-modal": "^3.12.1",
 		"react-query": "^3.13.0",

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 
 export type Category = 'salate' & string & {}
-export type Option = string
+export type DishOption = { title: string; price: number }
 export type Picture = string
 
 export interface Dish {
@@ -11,7 +11,7 @@ export interface Dish {
 	categories: Category[]
 	price: number
 	description: string
-	options: Option[]
+	options: DishOption[]
 	pictures: Picture[]
 	created_at: string
 	updated_at: string

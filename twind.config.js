@@ -1,7 +1,17 @@
 import * as colors from 'twind/colors'
+import { forms } from '@twind/forms'
+import { css } from 'twind/css'
 
 /** @type {import('twind').Configuration} */
 export default {
+	preflight: (preflight) => css`
+		${preflight}
+		input[type='number']::-webkit-inner-spin-button,
+		input[type='number']::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	`,
 	theme: {
 		darkMode: 'class', // or 'media' or 'class'
 		extend: {
@@ -64,7 +74,15 @@ export default {
 				3: '3',
 				4: '4',
 			},
+			backgroundImage: (theme) => ({
+				check: "url('/icons/check.svg')",
+			}),
 		},
 	},
-	variants: {},
+	plugins: {
+		// forms,
+	},
+	variants: {
+		hocus: '&:hover, &:focus',
+	},
 }

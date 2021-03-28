@@ -344,6 +344,11 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/context-base/-/context-base-0.14.0.tgz#c67fc20a4d891447ca1a855d7d70fa79a3533001"
   integrity sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
 
+"@twind/forms@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@twind/forms/-/forms-0.1.4.tgz#b9d6edcd44bd216fe566199c77938a96f47cb46d"
+  integrity sha512-OwI3xd0NTDlQo2M9L3NDVnngBU/mGgHaIAif91taGfiN4zpbwvYLSpUFIeBlcD8XeGvdFQv07T5hxavFRsKa7Q==
+
 "@twind/jsx-preprocessor@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@twind/jsx-preprocessor/-/jsx-preprocessor-2.1.0.tgz#c8c8db6bb893500007e17dc86563a979acb0a401"
@@ -1967,6 +1972,11 @@ react-feather@^2.0.9:
   integrity sha512-yMfCGRkZdXwIs23Zw/zIWCJO3m3tlaUvtHiXlW+3FH7cIT6fiK1iJ7RJWugXq7Fso8ZaQyUm92/GOOHXvkiVUw==
   dependencies:
     prop-types "^15.7.2"
+
+react-hook-form@^6.15.5:
+  version "6.15.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.5.tgz#c2578f9ce6a6df7b33015587d40cd880dc13e2db"
+  integrity sha512-so2jEPYKdVk1olMo+HQ9D9n1hVzaPPFO4wsjgSeZ964R7q7CHsYRbVF0PGBi83FcycA5482WHflasdwLIUVENg==
 
 react-intersection-observer@^8.31.0:
   version "8.31.0"

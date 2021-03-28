@@ -1,4 +1,5 @@
 import create from 'zustand'
+import { Dish } from './useDishes'
 
 export type ActiveTab = 'Menu' | 'Info' | 'Cart'
 
@@ -28,7 +29,6 @@ export const useCategory = create<CategoryState>((set) => ({
 }))
 
 /*  */
-
 type CartModalState = {
 	isOpen: boolean
 	setIsOpen: (isOpen: boolean) => void
@@ -37,4 +37,16 @@ type CartModalState = {
 export const useCartModal = create<CartModalState>((set) => ({
 	isOpen: false,
 	setIsOpen: (isOpen: boolean) => set({ isOpen }),
+}))
+
+/*  */
+
+type DishState = {
+	selectedDish?: Dish
+	setSelectedDish: (selectedDish: Dish) => void
+}
+
+export const useDish = create<DishState>((set) => ({
+	selectedDish: undefined,
+	setSelectedDish: (selectedDish: Dish) => set({ selectedDish }),
 }))
