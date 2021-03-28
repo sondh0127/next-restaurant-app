@@ -1,9 +1,6 @@
 import { tw } from 'twind'
-
-/* framer-motion and useInView here are used to animate the sections in when we reach them in the viewport
- */
 import { motion } from 'framer-motion'
-// import useInView from 'use-in-view'
+import { useInView } from 'react-intersection-observer'
 import React from 'react'
 
 function AnimationReveal({
@@ -42,8 +39,9 @@ function AnimatedSlideInComponent({
 	offset?: number
 	children: React.ReactNode
 }) {
-	// const [ref, inView] = useInView(30)
-
+	const { ref, inView, entry } = useInView({
+		threshold: 0,
+	})
 	const x: { initial: string; target: string } = { initial: '', target: '0%' }
 
 	if (direction === 'left') x.initial = '-150%'
@@ -51,19 +49,15 @@ function AnimatedSlideInComponent({
 
 	return (
 		<motion.section
+			ref={ref}
 			initial={{ x: x.initial }}
 			animate={{
-				// x: inView && x.target,
-				// transitionEnd: {
-				// 	x: inView && 0,
-				// },
-				x: true && x.target,
+				x: x.target,
 				transitionEnd: {
-					x: true && 0,
+					x: 0,
 				},
 			}}
-			transition={{ type: 'spring', damping: 100 }}
-			// ref={ref}
+			transition={{ type: 'spring', duration: 2 }}
 		>
 			{children}
 		</motion.section>
@@ -72,7 +66,7 @@ function AnimatedSlideInComponent({
 
 const AnimationRevealPage: React.FC<any> = (props) => (
 	<div
-		className={`App ${tw`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`}`}
+		className={tw`font-display min-h-screen text-secondary-500 p-8 overflow-hidden`}
 	>
 		<AnimationReveal {...props} />
 	</div>

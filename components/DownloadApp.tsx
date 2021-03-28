@@ -46,7 +46,7 @@ const LinksContainer = styled('div', {
 	base: `mt-8 lg:mt-16 flex flex-col items-center sm:block`,
 })
 const Link = styled('a', {
-	base: `w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 first:ml-0 bg-gray-100 hocus:bg-gray-300 text-gray-900 hocus:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`,
+	base: `w-56 p-3 sm:p-4 text-sm sm:text-base font-bold uppercase tracking-wider rounded-full inline-flex justify-center items-center mt-6 first:mt-0 sm:mt-0 sm:ml-8 first:ml-0 bg-gray-100 hover:bg-gray-300 text-gray-900 hover:text-gray-900 shadow hover:shadow-lg focus:shadow-outline focus:outline-none transition duration-300`,
 })
 const linkImgCls = tw`inline-block h-8 mr-3`
 const linkSpanCls = tw`leading-none inline-block`

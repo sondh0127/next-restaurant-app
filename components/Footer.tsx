@@ -44,7 +44,7 @@ const ColumnHeading = styled('h5', { base: `uppercase font-bold` })
 const LinkList = styled('ul', { base: `mt-6 text-sm font-medium` })
 const LinkListItem = styled('li', { base: `mt-3` })
 const Link = styled('a', {
-	base: `border-b-2 border-transparent hocus:border-gray-700 pb-1 transition duration-300`,
+	base: `border-b-2 border-transparent hover:border-gray-700 pb-1 transition duration-300`,
 })
 
 const SubscribeNewsletterColumn = styled(Column, {

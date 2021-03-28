@@ -12,20 +12,22 @@ const HeaderContainer = styled('header', {
 
 export const NavLinks = styled('div', { base: `inline-block` })
 
-/* hocus: stands for "on hover or focus"
- * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
- */
 export const NavLink = styled('a', {
 	base: `text-lg my-2 lg:text-sm text-2xl! lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
-  pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
+  pb-1 border-b-2 border-transparent hover:border-primary-500 hover:text-primary-500
 `,
+	variants: {
+		rounded: {
+			true: `rounded-full`,
+		},
+	},
 })
 
 export const PrimaryLink = styled(NavLink, {
 	base: `lg:mx-0
   px-8 py-3 rounded bg-primary-500 text-gray-100
-  hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
+  hover:bg-primary-700 hover:text-gray-200 focus:shadow-outline
   border-b-0
 `,
 })
@@ -38,7 +40,7 @@ export const MobileNavLinksContainer = styled('nav', {
 	base: `flex flex-1 items-center justify-between`,
 })
 export const NavToggle = styled('button', {
-	base: `lg:hidden z-20 focus:outline-none hocus:text-primary-500 transition duration-300
+	base: `lg:hidden z-20 focus:outline-none hover:text-primary-500 transition duration-300
 `,
 })
 // TODO:
@@ -51,6 +53,14 @@ export const NavToggle = styled('button', {
 
 export const DesktopNavLinks = styled('nav', {
 	base: `hidden lg:flex flex-1 justify-between items-center`,
+	variants: {
+		breakpoint: {
+			sm: `sm:flex`,
+			md: `md:flex`,
+			lg: `lg:flex`,
+			xl: `lg:flex`,
+		},
+	},
 })
 
 /* The below code is for generating dynamic break points for navbar.
@@ -62,22 +72,18 @@ export const DesktopNavLinks = styled('nav', {
 const collapseBreakPointCssMap = {
 	sm: {
 		mobileNavLinks: tw`sm:hidden`,
-		desktopNavLinks: tw`sm:flex`,
 		mobileNavLinksContainer: tw`sm:hidden`,
 	},
 	md: {
 		mobileNavLinks: tw`md:hidden`,
-		desktopNavLinks: tw`md:flex`,
 		mobileNavLinksContainer: tw`md:hidden`,
 	},
 	lg: {
 		mobileNavLinks: tw`lg:hidden`,
-		desktopNavLinks: tw`lg:flex`,
 		mobileNavLinksContainer: tw`lg:hidden`,
 	},
 	xl: {
 		mobileNavLinks: tw`lg:hidden`,
-		desktopNavLinks: tw`lg:flex`,
 		mobileNavLinksContainer: tw`lg:hidden`,
 	},
 }
@@ -116,13 +122,9 @@ const Header: React.FC<{
 			<NavLink href="/#">Blog</NavLink>
 			<NavLink href="/#">Pricing</NavLink>
 			<NavLink href="/#">Contact Us</NavLink>
-			<NavLink href="/#" tw="lg:ml-12!">
-				Login
-			</NavLink>
-			<PrimaryLink
-				className={tw` ${roundedHeaderButton && 'rounded-full'}`}
-				href="/#"
-			>
+			<span className={tw`lg:ml-12`}></span>
+			<NavLink href="/#">Login</NavLink>
+			<PrimaryLink rounded={roundedHeaderButton} href="/#">
 				Sign Up
 			</PrimaryLink>
 		</NavLinks>,
@@ -144,26 +146,27 @@ const Header: React.FC<{
 
 	return (
 		<HeaderContainer className={className || 'header-light'}>
-			<DesktopNavLinks className={collapseBreakpointCss.desktopNavLinks}>
-				{logoLink}
+			<DesktopNavLinks breakpoint={collapseBreakpointClass}>
+				{/* {logoLink} */}
 				{links}
 			</DesktopNavLinks>
 
-			<MobileNavLinksContainer
+			{/*  */}
+
+			{/* <MobileNavLinksContainer
 				className={collapseBreakpointCss.mobileNavLinksContainer}
 			>
 				{logoLink}
-				{/* TODO */}
-				{/* <MobileNavLinks
-            initial={{ x: '150%', display: 'none' }}
-            animate={animation}
-            css={collapseBreakpointCss.mobileNavLinks}
-          >
-            {links}
-          </MobileNavLinks> */}
+				<MobileNavLinks
+					initial={{ x: '150%', display: 'none' }}
+					animate={animation}
+					css={collapseBreakpointCss.mobileNavLinks}
+				>
+					{links}
+				</MobileNavLinks>
 				<NavToggle
 					onClick={toggleNavbar}
-					// className={showNavLinks ? 'open' : 'closed'}
+					className={showNavLinks ? 'open' : 'closed'}
 				>
 					{showNavLinks ? (
 						<CloseIcon className={tw`w-6 h-6`} />
@@ -171,7 +174,7 @@ const Header: React.FC<{
 						<MenuIcon className={tw`w-6 h-6`} />
 					)}
 				</NavToggle>
-			</MobileNavLinksContainer>
+			</MobileNavLinksContainer> */}
 		</HeaderContainer>
 	)
 }

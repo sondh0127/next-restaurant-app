@@ -134,7 +134,7 @@ const Features: React.FC<FeaturesProps> = ({
 								</p>
 								{linkText && (
 									<span
-										className={tw`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-300 leading-none hocus:text-primary-900 transition duration-300`}
+										className={tw`mt-auto inline-flex items-center pt-5 text-sm font-bold text-primary-300 leading-none hover:text-primary-900 transition duration-300`}
 									>
 										<span>{linkText}</span>
 										<ArrowRightIcon className={tw`ml-2 w-4`} />

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Layout from '../components/Layout'
+import Layout from '../layouts/Layout'
 import { tw, styled } from '@twind/react'
 import AnimationRevealPage from '@/components/AnimationRevealPage'
 import Hero from '@/components/Hero'
@@ -10,10 +10,49 @@ import MainFeature2 from '@/components/MainFeature2'
 import Testimonial from '@/components/Testimonial'
 import DownloadApp from '@/components/DownloadApp'
 import Footer from '@/components/Footer'
+import { useInView } from 'react-intersection-observer'
 
 import chefIconImageSrc from '@/assets/images/chef-icon.svg'
 import celebrationIconImageSrc from '@/assets/images/celebration-icon.svg'
 import shopIconImageSrc from '@/assets/images/shop-icon.svg'
+import { useEffect } from 'react'
+import { motion, useAnimation } from 'framer-motion'
+
+const Component = () => {
+	const animation = useAnimation()
+	const { ref, inView, entry } = useInView({ threshold: 0.1 })
+
+	useEffect(() => {
+		if (inView) {
+			console.log('🇻🇳 ~ file: index.tsx ~ line 27 ~ inView', inView)
+			animation.start('visible')
+		} else {
+			animation.start('hidden')
+		}
+	}, [animation, inView])
+
+	return (
+		<motion.div
+			ref={ref}
+			// initial={{ x: '150%' }}
+			// animate={{
+			// 	x: '0%',
+			// 	transitionEnd: {
+			// 		x: 0,
+			// 	},
+			// }}
+			initial="hidden"
+			animate={animation}
+			variants={{
+				hidden: { opacity: 0 },
+				visible: { opacity: 1 },
+			}}
+			// transition={{ type: 'spring', duration: 2 }}
+		>
+			<h2>{`Header inside viewport ${inView}.`}</h2>
+		</motion.div>
+	)
+}
 
 const Subheading = styled('span', {
 	base: `tracking-wider text-sm font-medium`,
@@ -27,27 +66,6 @@ const HighlightedTextInverse = styled('span', {
 const Description = styled('span', { base: `inline-block mt-8` })
 const imageClass = tw`rounded-4xl`
 
-const IndexPageOld = () => {
-	return (
-		<Layout title="Home | Next.js + TypeScript Example">
-			<main
-				className={tw`h-screen bg-purple-400 flex flex-col items-center justify-center`}
-			>
-				<h1
-					className={tw`font-bold text(center 5xl white sm:gray-800 md:pink-700)`}
-				>
-					Hello Next.js 👋This is Twind!
-				</h1>
-				<p>
-					<Link href="/about">
-						<a>About</a>
-					</Link>
-				</p>
-			</main>
-		</Layout>
-	)
-}
-
 const IndexPage = () => {
 	return (
 		<AnimationRevealPage>
@@ -60,12 +78,12 @@ const IndexPage = () => {
 				}
 				description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 				imageSrc="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80"
-				imageClass={imageClass}
+				imageCss={imageClass}
 				imageDecoratorBlob={true}
 				primaryButtonText="Order Now"
 				watchVideoButtonText="Meet The Chefs"
 			/>
-			<MainFeature
+			{/* <MainFeature
 				subheading={<Subheading>Established Since 2014</Subheading>}
 				heading={
 					<>
@@ -92,15 +110,15 @@ const IndexPage = () => {
 				imageClass={imageClass}
 				imageDecoratorBlob={true}
 				imageDecoratorBlobClass={tw`left-1/2 -translate-x-1/2 md:w-32 md:h-32 opacity-25`}
-			/>
-			<TabCardGrid
+			/> */}
+			{/* <TabCardGrid
 				heading={
 					<>
 						Checkout our <HighlightedText>menu.</HighlightedText>
 					</>
 				}
-			/>
-			<Features
+			/> */}
+			{/* <Features
 				heading={
 					<>
 						Amazing <HighlightedText>Services.</HighlightedText>
@@ -128,8 +146,8 @@ const IndexPage = () => {
 				]}
 				imageContainerCss={tw`p-2!`}
 				imageCss={tw`w-20! h-20!`}
-			/>
-			<MainFeature2
+			/> */}
+			{/* <MainFeature2
 				subheading={<Subheading>A Reputed Brand</Subheading>}
 				heading={
 					<>
@@ -159,24 +177,24 @@ const IndexPage = () => {
 				imageDecoratorBlob={true}
 				imageDecoratorBlobCss={tw`left-1/2 md:w-32 md:h-32 -translate-x-1/2 opacity-25`}
 				textOnLeft={true}
-			/>
-			<Testimonial
+			/> */}
+			{/* <Testimonial
 				subheading=""
 				heading={
 					<>
 						Customers <HighlightedText>Love Us.</HighlightedText>
 					</>
 				}
-			/>
-			<DownloadApp
+			/> */}
+			{/* <DownloadApp
 				text={
 					<>
 						People around you are ordering delicious meals using the{' '}
 						<HighlightedTextInverse>Treact App.</HighlightedTextInverse>
 					</>
 				}
-			/>
-			<Footer />
+			/> */}
+			{/* <Footer /> */}
 		</AnimationRevealPage>
 	)
 }
