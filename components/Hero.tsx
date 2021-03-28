@@ -8,6 +8,7 @@ import ResponsiveVideoEmbed from '@/components/ResponsiveVideoEmbed'
 
 import DesignIllustration from '@/assets/images/design-illustration.svg'
 import { PlayCircle as PlayIcon, X as CloseIcon } from 'react-feather'
+import Dishes from '@/components/Dishes'
 
 const SvgDecoratorBlob1 = (props: any) => {
 	return (
@@ -77,7 +78,7 @@ const DecoratorBlob2 = styled(SvgDecoratorBlob2, {
 })
 
 const CloseModalButton = styled('button', {
-	base: `absolute top-0 right-0 mt-8 mr-8 hover:text-primary-500`,
+	base: `hover:text-primary-500  rounded-full border border-gray-500`,
 })
 
 interface HeroProps {
@@ -104,8 +105,14 @@ const Hero: React.FC<HeroProps> = ({
 	imageDecoratorBlob = false,
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
+	const [orderModalIsOpen, setOrderModalIsOpen] = useState(false)
 
 	const toggleModal = () => setModalIsOpen(!modalIsOpen)
+	const toggleOrderModal = () => setOrderModalIsOpen(!orderModalIsOpen)
+
+	const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+		toggleOrderModal()
+	}
 
 	return (
 		<>
@@ -116,7 +123,7 @@ const Hero: React.FC<HeroProps> = ({
 						<Heading>{heading}</Heading>
 						<Paragraph>{description}</Paragraph>
 						<Actions>
-							<PrimaryButton href={primaryButtonUrl}>
+							<PrimaryButton href={primaryButtonUrl} onClick={handleClick}>
 								{primaryButtonText}
 							</PrimaryButton>
 							<WatchVideoButton onClick={toggleModal}>
@@ -139,8 +146,8 @@ const Hero: React.FC<HeroProps> = ({
 				<DecoratorBlob1 />
 				<ReactModalAdapter
 					closeTimeoutMS={300}
-					className={tw`fixed inset-0 z-50`}
-					overlayClassName={tw`xl:mx-auto m-4 sm:m-16 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
+					className={tw`xl:mx-auto m-4 sm:m-16 max-w-screen-xl absolute inset-0 flex justify-center items-center rounded-lg bg-gray-200 outline-none`}
+					overlayClassName={tw`fixed inset-0 z-50`}
 					isOpen={modalIsOpen}
 					onRequestClose={toggleModal}
 					shouldCloseOnOverlayClick={true}
@@ -154,6 +161,29 @@ const Hero: React.FC<HeroProps> = ({
 							className={tw`w-full`}
 						/>
 					</div>
+				</ReactModalAdapter>
+				<ReactModalAdapter
+					closeTimeoutMS={300}
+					className={tw`
+					2xl:(max-w-screen-xl)
+					xl:(mx-auto max-w-screen-lg) 
+					m-4 sm:m-16 absolute inset-0 flex justify-center items-center rounded-lg bg-white bg-opacity-95 outline-none border border-gray-500`}
+					overlayClassName={tw`fixed inset-0 z-50`}
+					isOpen={orderModalIsOpen}
+					onRequestClose={toggleOrderModal}
+					shouldCloseOnOverlayClick={true}
+				>
+					<div
+						className={tw`absolute top-0 right-0 transform translate-x-full`}
+					>
+						<button
+							className={tw`ml-2 hover:text-primary-500  rounded-full border border-gray-500`}
+							onClick={toggleOrderModal}
+						>
+							<CloseIcon className={tw`w-6 h-6`} />
+						</button>
+					</div>
+					<Dishes />
 				</ReactModalAdapter>
 			</Container>
 		</>

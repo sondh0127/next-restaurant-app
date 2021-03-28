@@ -15,43 +15,22 @@ import { useInView } from 'react-intersection-observer'
 import chefIconImageSrc from '@/assets/images/chef-icon.svg'
 import celebrationIconImageSrc from '@/assets/images/celebration-icon.svg'
 import shopIconImageSrc from '@/assets/images/shop-icon.svg'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
+import { QueryClient, useQuery } from 'react-query'
+import { dehydrate } from 'react-query/hydration'
+import { fetchDishes } from '@/hooks/useDishes'
 
-const Component = () => {
-	const animation = useAnimation()
-	const { ref, inView, entry } = useInView({ threshold: 0.1 })
+export async function getStaticProps() {
+	const queryClient = new QueryClient()
 
-	useEffect(() => {
-		if (inView) {
-			console.log('🇻🇳 ~ file: index.tsx ~ line 27 ~ inView', inView)
-			animation.start('visible')
-		} else {
-			animation.start('hidden')
-		}
-	}, [animation, inView])
+	await queryClient.prefetchQuery(['dishes', 10], () => fetchDishes(10))
 
-	return (
-		<motion.div
-			ref={ref}
-			// initial={{ x: '150%' }}
-			// animate={{
-			// 	x: '0%',
-			// 	transitionEnd: {
-			// 		x: 0,
-			// 	},
-			// }}
-			initial="hidden"
-			animate={animation}
-			variants={{
-				hidden: { opacity: 0 },
-				visible: { opacity: 1 },
-			}}
-			// transition={{ type: 'spring', duration: 2 }}
-		>
-			<h2>{`Header inside viewport ${inView}.`}</h2>
-		</motion.div>
-	)
+	return {
+		props: {
+			dehydratedState: dehydrate(queryClient),
+		},
+	}
 }
 
 const Subheading = styled('span', {
