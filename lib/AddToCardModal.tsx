@@ -1,4 +1,4 @@
-import { useDish } from '@/hooks/useMenu'
+import { useDish, OrderForm, useCart } from '@/hooks/useMenu'
 import { DishOption } from '@/hooks/useDishes'
 import React from 'react'
 import ReactModal from 'react-modal'
@@ -7,15 +7,11 @@ import { Icon } from '@iconify/react-with-api'
 import { motion } from 'framer-motion'
 import { PrimaryButton } from '@/components/Buttons'
 import { useForm, Controller, useWatch } from 'react-hook-form'
+import produce from 'immer'
 
 interface AddToCardModalProps {
 	isOpen: boolean
 	closeModal: () => void
-}
-interface OrderFormData {
-	options: DishOption[]
-	instruction: string
-	quantity: number
 }
 
 export const AddToCardModal: React.FC<AddToCardModalProps> = ({
@@ -23,6 +19,8 @@ export const AddToCardModal: React.FC<AddToCardModalProps> = ({
 	closeModal,
 }) => {
 	const selectedDish = useDish((state) => state.selectedDish)
+	const setSelectedDish = useDish((state) => state.setSelectedDish)
+	const addOrder = useCart((state) => state.addOrder)
 	const imageSrc =
 		'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80'
 	const {
@@ -33,7 +31,7 @@ export const AddToCardModal: React.FC<AddToCardModalProps> = ({
 		control,
 		getValues,
 		setValue,
-	} = useForm<OrderFormData>({
+	} = useForm<OrderForm>({
 		defaultValues: {
 			quantity: 1,
 		},
@@ -47,7 +45,17 @@ export const AddToCardModal: React.FC<AddToCardModalProps> = ({
 	})
 
 	const onSubmit = handleSubmit((data) => {
-		console.log('data', data)
+		if (selectedDish) {
+			const _data = produce(data, (draftState) => {
+				draftState.options = draftState.options.filter((item) => item)
+				draftState.quantity = +draftState.quantity
+			})
+
+			addOrder({ ..._data, dish: selectedDish })
+			// Close form && clear selectedDish
+			closeModal()
+			setSelectedDish(undefined)
+		}
 	})
 
 	// console.log(watch('example')) // watch input value by passing the name of it
@@ -162,6 +170,7 @@ export const AddToCardModal: React.FC<AddToCardModalProps> = ({
 								className={tw`flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1`}
 							>
 								<button
+									type="button"
 									onClick={handleDecrease}
 									className={tw`focus:outline-none bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none`}
 								>
@@ -177,6 +186,7 @@ export const AddToCardModal: React.FC<AddToCardModalProps> = ({
 									min={1}
 								></input>
 								<button
+									type="button"
 									onClick={handleIncrease}
 									className={tw`focus:outline-none bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer`}
 								>

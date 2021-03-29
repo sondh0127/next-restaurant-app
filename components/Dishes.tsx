@@ -14,6 +14,7 @@ import { motion } from 'framer-motion'
 import ReactModal from 'react-modal'
 import { DishItem } from '@/lib/DishItem'
 import { AddToCardModal } from '@/lib/AddToCardModal'
+import { CartTab } from '@/components/CartTab'
 
 const HeaderButton = styled('button', {
 	base: `p-6 text-2xl focus:outline-none`,
@@ -129,10 +130,6 @@ const MenuTab = () => {
 
 const InfoTab = () => {
 	return <div>InfoTab</div>
-}
-
-const CartTab = () => {
-	return <div>CartTab</div>
 }
 
 const TabContentMap = {
