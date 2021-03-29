@@ -74,7 +74,7 @@ const MenuTab = () => {
 
 	const tabsKeys = Object.keys(tabs) as CategoryKeys[]
 
-	if (isLoading) return <div>Loading</div>
+	// if (isLoading) return <div>Loading</div>
 
 	return (
 		<div className={tw`relative`}>
